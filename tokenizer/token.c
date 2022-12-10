@@ -1,4 +1,6 @@
 #include "token.h"
+#include "utils.h"
+#include <stdio.h>
 
 t_token	*token_malloc(void)
 {
@@ -28,7 +30,7 @@ void	token_print(void *data)
 
 void	token_clear(t_token *tkn)
 {
-	safety_free(&(tkn->type));
-	safety_free(&(tkn->value));
-	safety_free(&tkn);
+	safety_free((void **)&(tkn->type));
+	safety_free((void **)&(tkn->value));
+	safety_free((void **)&tkn);
 }
