@@ -44,3 +44,11 @@ char	*ft_substr(char *str, int s, int e)
 	return (ret);
 }
 
+void	safety_free(void **type)
+{
+	if (*type != NULL)
+	{
+		free(*type);
+		(*type) = NULL;
+	}
+}

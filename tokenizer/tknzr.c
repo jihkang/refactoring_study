@@ -4,39 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-t_token	*token_malloc(void)
-{
-	t_token	*tkn;
-
-	tkn = (t_token *)malloc(sizeof(t_token));
-	tkn->type = NULL;
-	tkn->value = NULL;
-	return (tkn);
-}
-
-void	token_set(t_token *tkn, char *type, char *value)
-{
-	tkn->type = type;
-	tkn->value = value;
-}
-
-void	token_print(void *data)
-{
-	t_token	*tkn;
-
-	tkn = data;
-	printf("type : %s\n", tkn->type);
-	printf("value : %s\n", tkn->value);
-	printf("\n\n");
-}
-
-int	ft_correct_input_ascii(char c)
-{
-	return ((c >= 'a' && c <= 'z') || \
-			(c >= 'A' && c <= 'Z') || \
-			(c == '\'' || c == '\"' || c == '$'));
-}
-
 int	token_parser_brakets(char *line, int *i, t_token *tkn)
 {
 	if (line[*i] == '(')
