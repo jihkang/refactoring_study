@@ -12,5 +12,6 @@ void	list_destroy(t_list *lst);
 void	list_clear(t_list *lst);
 void	list_clear_content(t_list *lst);
 void	list_print_data(t_list *lst, void (*p_func)(void *data));
+t_list	*get_next(t_list *lst);
 
 #endif

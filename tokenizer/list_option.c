@@ -42,3 +42,8 @@ void	list_print_data(t_list *lst, void (*p_func)(void *data))
 		++i;
 	}
 }
+
+t_list	*get_next(t_list *lst)
+{
+	return (lst->next);
+}

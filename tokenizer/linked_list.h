@@ -13,5 +13,7 @@ void		link_push_back(t_link_lst *link, void *data);
 void		link_push_front(t_link_lst *link, void *data);
 void		link_print_data(t_link_lst *link, void (*p_func)(void *data));
 void		link_set_data(t_link_lst *link, void *data);
+t_list		*get_head(t_link_lst *link);
+void		pop_front(t_link_lst *lnk);
 
 #endif

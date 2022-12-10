@@ -31,6 +31,14 @@ typedef struct s_link_lst
 {
 	t_list	*head;
 	t_list	*tail;
+	int		len;
 }t_link_lst;
+
+typedef struct s_ast
+{
+	char		*type;
+	char		*value;
+	t_link_lst	*body;
+}t_ast;
 
 #endif

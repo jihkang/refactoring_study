@@ -1,5 +1,27 @@
 #include "utils.h"
 
+int	ft_strcmp(char *str, char *str2)
+{
+	int	i;
+
+	if (str == NULL && str2 == NULL)
+		return (0);
+	if (str == NULL)
+		return (1);
+	if (str2 == NULL)
+		return (1);
+	i = 0;
+	while (str[i] && str2[i])
+	{
+		if (str[i] != str2[i])
+			return (1);
+		++i;
+	}
+	if (str[i] != str2[i])
+		return (1);
+	return (0);
+}
+
 int	ft_strlen(char *str)
 {
 	int	i;

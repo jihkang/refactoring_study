@@ -31,7 +31,8 @@ void	tknzr(t_link_lst *lnk, char *line)
 void	tknzr_test()
 {
 	t_link_lst	*lnk;
-	char		*line = "asa<sdfff>asdf'qwerrrrr(qwer)'|&&(asdf)";
+	char		*line = "<< e""of";
+	//"asa<sdfff>asdf'qwerrrrr(qwer)'|&&(asdf)";
 
 	lnk = link_malloc();
 	tknzr(lnk, line);
