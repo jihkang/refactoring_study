@@ -1,12 +1,20 @@
 #include "tknzr.h"
 #include "ast.h"
 
-void	*walk(t_ast *ast, t_link_lst *tkn)
+void	node_push_back()
 {
-	
+
 }
 
-t_link_lst	*tknzr_parser(t_link_lst *tkn)
+void	ast_push_back(t_ast *ast, t_link_lst *tkn, int *idx)
+{
+	int	cur;
+
+	cur = *idx;
+	*idx = cur;
+}
+
+t_ast	*tknzr_parser(t_link_lst *tkn)
 {
 	t_list	*cur;
 	t_ast	*ast;
@@ -17,8 +25,9 @@ t_link_lst	*tknzr_parser(t_link_lst *tkn)
 	cur = get_head(tkn);
 	if (cur == NULL)
 		return (ast);
-	while (i < tkn->len)
+	while (i < link_get_length(tkn))
 	{
+		ast_push_back(ast, tkn, &i);
 		++i;
 	}
 	return (ast);
@@ -26,11 +35,12 @@ t_link_lst	*tknzr_parser(t_link_lst *tkn)
 
 int	main()
 {
-	t_link_lst	*lnk;
-	char		*line;
+//	t_link_lst	*lnk;
+//	char		*line;
 
-	lnk = link_malloc();
-	tknzr(lnk, line);
-	tknzr_parser(lnk);
+//	lnk = link_malloc();
+//	tknzr(lnk, line);
+//	tknzr_parser(lnk);
+	tknzr_test();
 	return (0);
 }

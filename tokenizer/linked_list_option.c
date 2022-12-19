@@ -19,11 +19,16 @@ t_list	*get_head(t_link_lst *lnk)
 	return (lnk->head);
 }
 
-void	pop_front(t_link_lst *lnk)
+int	link_get_length(t_link_lst *lnk)
+{
+	return (lnk->len);
+}
+
+void	pop_front(t_link_lst *lnk, void (*p_func)(void *))
 {
 	if (lnk->len == 0)
 		return ;
-	lnk->head = list_pop_front(lnk->head);
+	lnk->head = list_pop_front(lnk->head, p_func);
 	lnk->len--;
 	if (lnk->len == 0)
 		lnk->tail = NULL;

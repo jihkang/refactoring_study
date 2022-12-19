@@ -1,13 +1,13 @@
 #include "types.h"
+#include "utils.h"
 
-t_list	*list_pop_front(t_list *lst)
+t_list	*list_pop_front(t_list *lst, void (*p_func)(void *))
 {
 	t_list	*tmp;
 
 	tmp = lst->next;
-	safety_free(&(lst->value));
-	safety_free(&(lst->type));
-	safety_free(&(lst));
+	p_func(lst->content);
+	safety_free((void **)&(lst));
 	tmp->prev = NULL;
 	return (tmp);
 }
