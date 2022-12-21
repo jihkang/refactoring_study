@@ -16,7 +16,6 @@ void solve(int n, int l)
 	}
 	int start = sigma(n, l);
 	int i;
-
 	if (start < 0)
 	{
 		cout << "-1";
