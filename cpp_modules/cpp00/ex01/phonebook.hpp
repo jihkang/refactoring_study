@@ -11,7 +11,6 @@ public:
 private:
 	void	add();
 	void	search();
-	void	exit();
 	void	totalDisplay();
 	void	display(int num);
 

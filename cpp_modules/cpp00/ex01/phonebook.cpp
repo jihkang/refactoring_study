@@ -88,10 +88,6 @@ void PhoneBook::search() {
 	display(num);
 }
 
-void PhoneBook::exit() {
-
-}
-
 void PhoneBook::totalDisplay() {
 	for (int i = 0; i < mSaved; ++i) {
 		std::cout.width(10);
