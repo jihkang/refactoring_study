@@ -36,8 +36,8 @@ int main()
 {
 	int n, m;
 	int cnt = 1;
-	deque<int> dq;
 
+	deque<int> dq;
 	cin >> n >> m;
 	dq.push_back(n);
 	if (n == m)
