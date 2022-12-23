@@ -83,7 +83,7 @@ void PhoneBook::search() {
 	if (valid == true)
 		return ;
 	num = atoi(input.c_str());
-	if (num > mSaved && num <= 0)
+	if (num > mSaved || num <= 0)
 		return ;
 	display(num);
 }
