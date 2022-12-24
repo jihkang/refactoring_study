@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>/* align-items: center; */
+
+	body {
+	  display: flex;
+	  justify-content: center;
+	  /* align-items: center; */
+	  min-height: 100vh;
+	  margin: 0;
+	}
+
+	.container {
+		align-items: center;
+		transform: translate(-50%, -50%);
+		margin : 0 auto;
+		position: relative;
+		display : flex;
+	  	width: 600px;
+	  	height: 600px;
+	}
+
+	.num-container {
+	  position: absolute;
+	  display: flex;
+	  justify-content: space-between;
+	  width: 100%;
+	  padding: 0 20px;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="circle3" class="circle3"></div>
+	</div>
+	<script>
+		const container = document.querySelector(".container");
+		const circle_3 = document.querySelector(".circle3")
+		let right = 3;
+		let left = 9;
+
+		for(let i = 0; i < 6; i++) {
+	 	 	const num_container = document.createElement('div');
+	  		num_container.classList.add('num-container');
+	  		num_container.style.transform = `rotate(${30 * i}deg)`;
+	  		num_container.innerHTML = ` <div class="num" 
+    				style="transform: rotate(-${30 * i}deg)">${left > 12 ? left - 12 : left}</div>
+    				<div class="num}" 
+      					style="transform: rotate(-${30 * i}deg)">${right}</div>`;
+	  		circle_3.appendChild(num_container);
+	  		right++;
+	  		left++;
+		}
+		let clicked = false;
+		const pos = {
+			x : document.body.clientWidth / 2,
+			y : document.body.clientHeight / 2,
+			i : 0,
+		};
+		let i =0;
+		function setInter() {
+			if (i == 360)
+			{	
+				return ;
+			}
+			container.style.transform = `rotate(${i}deg)`;
+			console.log(i);
+			++i;
+		}
+		const si = setInterval(() => {
+			if (i == 360)
+				clearInterval(si);
+			setInter();
+		}, 500);
+		// container.addEventListener("pointermove", (e) => {
+		// 	const rot = Math.atan2(e.clientY - pos.y, e.clientX - pos.x);
+		// 	console.log(rot);
+		// 	container.style.transform = `rotate(${rot * 30}deg)`;
+		// });
+	</script>
+	<script src="app.js" type ="module"> </script>
+</body>
+</html>
