@@ -13,6 +13,7 @@ int main()
 	for (int i = 1; i <= n; ++i){
 		cin >> num[i];
 	}
+
 	dp[0] = num[0];
 	dp[1] = num[1] + num[0];
 	dp[2] = num[1] + num[2];
