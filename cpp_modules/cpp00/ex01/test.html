@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> React - event: click and count</title>
+</head>
+<body>
+
+<div id = "root"> </div>
+
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"> </script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"> </script>
+
+
+<script> 
+    const rt = document.getElementById("root");
+    const hThree = React.createElement('h3',
+                                        {onMouseEnter: () => console.log('mouse enter'),},
+                                       'h3 with React!!' 
+                                      );
+    const btn = React.createElement("button",
+                                    { onclick: () => console.log("I'm clicked"),},
+                                    '버튼'
+                                   );
+    const container = React.createElement("div", null, [hThree, btn])
+        
+    ReactDOM.render(container, rt)  
+
+</script>    
+</body>
+</html>
