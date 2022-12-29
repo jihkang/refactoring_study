@@ -1,11 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
 int dp[101][100001];
-int _max = -1;
 
 void solve(vector<vector<int>>& v, int n, int w) {
 	for (int i = 1; i <= n; ++i) {
@@ -15,7 +13,7 @@ void solve(vector<vector<int>>& v, int n, int w) {
 					dp[i - 1][j + v[i - 1][0]], dp[i - 1][j] + v[i - 1][1]
 				);
 			}
-		}
+		}	
 		for (int j = 1; j <= w; ++j) {
 			dp[i][j] = max(dp[i - 1][j], dp[i][j]);
 		}
