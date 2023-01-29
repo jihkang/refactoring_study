@@ -1,52 +1,65 @@
 #include <iostream>
+#include <deque>
 #include <vector>
-#include <queue>
+#include <utility>
+#include <memset>
 
 using namespace std;
 
-int max2;
-int dp[100001];
+int		dp[1001];
+int		arr[1001];
+int		check[1001];
+bool	visited[1001];
+vector<int> graph[1001];
+int		n, m, k;
 
-int solve(vector<pair<int, int>>& v, vector<int>& delay, int m) {
-	vector<int> q;
-	int i;
-	int sum = 0;
-	for (i = 0; i < v.size(); ++i) {
-		if (v[i].first == m)
-			continue ;
-		if (dp[v[i].first] == 0) {
-			dp[v[i].first] = v[i].second;
-			q.push_back(v[i].first);
-		}	else if (delay[dp[v[i].first]] > delay[v[i].second]) {
-			dp[v[i].first] = v[i].second;
+
+void	solve(deque<int>& q)
+{
+	for (int i = 0; i < n; ++i) {
+		int cur = q.front();
+		q.pop_front();
+		for (int j = 0; j < graph[cur].size(); j++) {
+			int next = graph[cur][j];
+			dp[next] = max(dp[next], dp[cur] + arr[next]);
+			if (--check[next] == 0) {
+				q.push_back(next);
+			}
 		}
 	}
-	for (i = 0; i < q.size(); ++i) {
-		
-	}
-	cout << sum << "\n";
 }
 
 int main()
 {
-	int t;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	int	t;
 	cin >> t;
-	for (int i = 0; i < t; ++i) {
-		int n, k, m;
-		max2 = 100000000;
-		cin >> n >> k;
-		vector<int> delay(n);
-		vector<pair<int, int>> v; 
-		for (int j = 0; j < n; ++j) {
-			cin>>delay[j];
+	while (t--)
+	{
+		cin >> n >> m;
+		deque<int> q;
+		for (int i = 1; i <= n; ++i) {
+			cin >> arr[i];
+			dp[i] = arr[i];
 		}
-		for (int j = 0; j < k; ++j) {
-			pair<int, int> p;
-			cin>>p.first >> p.second;
-			v.push_back(p);
+		int start = 1;
+		for (int i = 0; i < m; ++i) {
+			int x, y;
+			cin >> x >> y;
+			graph[x].emplace_back(y);
+			check[y]++;
 		}
-		cin>> m;
-		solve(v, delay, m);
-	}	
+		for (int i = 1; i <= n; ++i) {
+			if (check[i] == 0) {
+				q.push_back(i);
+				break;
+			}
+		}
+		cin >> k;
+		solve(q);
+		cout << dp[k] << "\n";	
+	}
 	return 0;
 }
